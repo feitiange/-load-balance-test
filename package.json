@@ -1,0 +1,34 @@
+{
+  "name": "load-balance-test",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "no-pm2-error-server": "nohup node pm2/express-with-error.js &",
+    "pm2-error-server": "pm2 start pm2/express-with-error.js -i 4",
+    "no-pm2-pid-server": "node pm2/express-with-pid.js",
+    "pm2-pid-server": "pm2 start pm2/express-with-pid.js -i 4",
+    "nginx-server": "./bin/nginx && nohup node nginx/index.js &",
+    "tester": "node bin/work.js",
+    "no-pm2-error": "npm run no-pm2-error-server && npm run tester",
+    "pm2-error": "npm run pm2-error-server && npm run tester && pm2 stop all",
+    "pm2-pid": "npm run pm2-pid-server && npm run tester && pm2 stop all",
+    "nginx": "npm run nginx-server && npm run tester && ./bin/nginx -s stop"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/feitiange/load-balance-test.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/feitiange/load-balance-test/issues"
+  },
+  "homepage": "https://github.com/feitiange/load-balance-test#readme",
+  "dependencies": {
+    "express": "=4.17.1",
+    "node-fetch": "=2.6.0",
+    "pm2": "=4.3.0"
+  },
+  "devDependencies": {},
+  "description": ""
+}
