@@ -26,7 +26,7 @@
   "homepage": "https://github.com/feitiange/load-balance-test#readme",
   "dependencies": {
     "express": "=4.17.1",
-    "node-fetch": "=2.6.0",
+    "node-fetch": "=2.6.1",
     "pm2": "=4.3.0"
   },
   "devDependencies": {},
